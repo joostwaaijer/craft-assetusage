@@ -1,5 +1,5 @@
 {
-    "name": "born05/craft-assetusage",
+    "name": "roelvanhintum/craft-assetusage",
     "description": "Adds a column to see which assets are used or unused.",
     "type": "craft-plugin",
     "keywords": [
@@ -10,11 +10,15 @@
         "asset usage"
     ],
     "support": {
-        "docs": "https://github.com/born05/craft-assetusage/blob/craft4/README.md",
-        "issues": "https://github.com/born05/craft-assetusage/issues"
+        "docs": "https://github.com/roelvanhintum/craft-assetusage/blob/craft4/README.md",
+        "issues": "https://github.com/roelvanhintum/craft-assetusage/issues"
     },
     "license": "MIT",
     "authors": [
+        {
+            "name": "Roel van Hintum",
+            "homepage": "https://roel.vanhintum.eu/"
+        },
         {
             "name": "Born05",
             "homepage": "https://www.born05.com/"
@@ -25,11 +29,12 @@
         "craftcms/cms": "^5.0.0"
     },
     "require-dev": {
+        "craftcms/phpstan": "dev-main",
         "squizlabs/php_codesniffer": "3.*"
     },
     "autoload": {
         "psr-4": {
-          "born05\\assetusage\\": "src/"
+            "roelvanhintum\\assetusage\\": "src/"
         }
     },
     "extra": {
@@ -37,7 +42,7 @@
         "handle": "assetusage",
         "hasCpSettings": false,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/born05/craft-assetusage/craft4/CHANGELOG.md"
+        "changelogUrl": "https://raw.githubusercontent.com/roelvanhintum/craft-assetusage/craft4/CHANGELOG.md"
     },
     "config": {
         "allow-plugins": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace born05\assetusage\services;
+namespace roelvanhintum\assetusage\services;
 
 use Craft;
 use craft\base\Component;
@@ -8,7 +8,7 @@ use craft\db\Query;
 use craft\db\Table;
 use craft\elements\Asset as AssetElement;
 use craft\helpers\ElementHelper;
-use born05\assetusage\Plugin;
+use roelvanhintum\assetusage\Plugin;
 
 class Asset extends Component
 {

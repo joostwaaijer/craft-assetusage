@@ -1,9 +1,9 @@
 <?php
 
-namespace born05\assetusage;
+namespace roelvanhintum\assetusage;
 
 use Craft;
-use born05\assetusage\services\Asset as AssetService;
+use roelvanhintum\assetusage\services\Asset as AssetService;
 use craft\base\Plugin as CraftPlugin;
 use craft\base\Model;
 use craft\console\Application as ConsoleApplication;
@@ -43,7 +43,7 @@ class Plugin extends CraftPlugin
 
         // Add in our console commands
         if (Craft::$app instanceof ConsoleApplication) {
-            $this->controllerNamespace = 'born05\assetusage\console\controllers';
+            $this->controllerNamespace = 'roelvanhintum\assetusage\console\controllers';
         }
 
         $this->registerTableAttributes();
@@ -55,7 +55,7 @@ class Plugin extends CraftPlugin
 
     protected function createSettingsModel(): ?Model
     {
-        return new \born05\assetusage\models\Settings();
+        return new \roelvanhintum\assetusage\models\Settings();
     }
 
     private function registerTemplateHooks()

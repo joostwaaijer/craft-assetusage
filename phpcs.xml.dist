@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="Born05 Standard">
-    <description>Born05 coding standard</description>
-
-    <file>./</file>
+<ruleset>
+    <file>.</file>
     <exclude-pattern>./vendor/*</exclude-pattern>
 
     <arg name="report" value="summary"/>

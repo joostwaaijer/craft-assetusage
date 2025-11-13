@@ -44,9 +44,3 @@ return [
 craft assetusage/default/delete-unused  # Deletes all unused assets.
 craft assetusage/default/list-unused    # Lists all unused assets.
 ```
-
-## License
-
-Copyright © [Born05](https://www.born05.com/)
-
-See [license](https://github.com/born05/craft-assetusage/blob/master/LICENSE.md)

@@ -1,6 +1,6 @@
 <?php
 
-namespace born05\assetusage\models;
+namespace roelvanhintum\assetusage\models;
 
 use craft\base\Model;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace born05\assetusage\console\controllers;
+namespace roelvanhintum\assetusage\console\controllers;
 
 use Craft;
 use craft\db\Query;
@@ -66,17 +66,17 @@ class DefaultController extends Controller
         }
 
         $subQueryRelations = (new Query())
-          ->select('id')
-          ->from(['relations' => Table::RELATIONS])
-          ->where('relations.targetId=assets.id')
-          ->orWhere('relations.sourceId=assets.id');
+            ->select('id')
+            ->from(['relations' => Table::RELATIONS])
+            ->where('relations.targetId=assets.id')
+            ->orWhere('relations.sourceId=assets.id');
 
         $subQueryContent = (new Query())
             ->select('elementId as id')
             ->from(Table::ELEMENTS_SITES)
             ->where("`content` LIKE CONCAT('%asset:', assets.id, ':%')")
             ->orWhere("`content` LIKE CONCAT('%\"imageId\": \"', assets.id, '\",%')");
-    
+
         $query = (new Query())
             ->select(['assets.id', 'assets.filename'])
             ->from(['assets' => Table::ASSETS])
