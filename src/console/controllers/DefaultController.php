@@ -69,8 +69,8 @@ class DefaultController extends Controller
         $subQueryRelations = (new Query())
             ->select('id')
             ->from(['relations' => Table::RELATIONS])
-            ->where('relations.targetId=assets.id')
-            ->orWhere('relations.sourceId=assets.id');
+            ->where('[[relations.targetId]]=[[assets.id]]')
+            ->orWhere('[[relations.sourceId]]=[[assets.id]]');
 
         $isPgsql = Craft::$app->db->getIsPgsql();
         $subQueryContent = (new Query())
