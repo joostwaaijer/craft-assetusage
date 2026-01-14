@@ -78,12 +78,12 @@ class DefaultController extends Controller
             ->from(Table::ELEMENTS_SITES)
             ->where(new Expression(
                 $isPgsql
-                    ? "[[content]] LIKE '%asset:' || [[assets.id]]::text || ':%'"
+                    ? "[[content]]::text LIKE '%asset:' || [[assets.id]]::text || ':%'"
                     : "[[content]] LIKE CONCAT('%asset:', [[assets.id]], ':%')"
             ))
             ->orWhere(new Expression(
                 $isPgsql
-                    ? "[[content]] LIKE '%\"imageId\": \"' || [[assets.id]]::text || '\"%'"
+                    ? "[[content]]::text LIKE '%\"imageId\": \"' || [[assets.id]]::text || '\"%'"
                     : "[[content]] LIKE CONCAT('%\"imageId\": \"', [[assets.id]], '\"%')"
             ));
 
