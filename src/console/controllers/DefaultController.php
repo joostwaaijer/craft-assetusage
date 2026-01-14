@@ -7,6 +7,7 @@ use craft\db\Query;
 use craft\db\Table;
 use yii\console\Controller;
 use yii\console\ExitCode;
+use yii\db\Expression;
 
 /**
  * Controls
@@ -71,11 +72,20 @@ class DefaultController extends Controller
             ->where('relations.targetId=assets.id')
             ->orWhere('relations.sourceId=assets.id');
 
+        $isPgsql = Craft::$app->db->getIsPgsql();
         $subQueryContent = (new Query())
             ->select('elementId as id')
             ->from(Table::ELEMENTS_SITES)
-            ->where("`content` LIKE CONCAT('%asset:', assets.id, ':%')")
-            ->orWhere("`content` LIKE CONCAT('%\"imageId\": \"', assets.id, '\",%')");
+            ->where(new Expression(
+                $isPgsql
+                    ? "[[content]] LIKE '%asset:' || [[assets.id]]::text || ':%'"
+                    : "[[content]] LIKE CONCAT('%asset:', [[assets.id]], ':%')"
+            ))
+            ->orWhere(new Expression(
+                $isPgsql
+                    ? "[[content]] LIKE '%\"imageId\": \"' || [[assets.id]]::text || '\"%'"
+                    : "[[content]] LIKE CONCAT('%\"imageId\": \"', [[assets.id]], '\"%')"
+            ));
 
         $query = (new Query())
             ->select(['assets.id', 'assets.filename'])
