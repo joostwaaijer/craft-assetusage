@@ -9,6 +9,7 @@ use craft\db\Table;
 use craft\elements\Asset as AssetElement;
 use craft\helpers\ElementHelper;
 use roelvanhintum\assetusage\Plugin;
+use yii\db\Expression;
 
 class Asset extends Component
 {
@@ -86,11 +87,14 @@ class Asset extends Component
 
     private function queryContents(AssetElement $asset): array
     {
+        $isPgsql = Craft::$app->db->getIsPgsql();
+        $contentColumn = $isPgsql ? new Expression('[[content]]::text') : 'content';
+
         return (new Query())
             ->select(['elementId as id', 'siteId'])
             ->from(Table::ELEMENTS_SITES)
-            ->where(['like', 'content', "asset:{$asset->id}:"])
-            ->orWhere(['like', 'content', "\"imageId\": \"{$asset->id}\","])
+            ->where(['like', $contentColumn, "asset:{$asset->id}:"])
+            ->orWhere(['like', $contentColumn, "\"imageId\": \"{$asset->id}\","])
             ->all();
     }
 
